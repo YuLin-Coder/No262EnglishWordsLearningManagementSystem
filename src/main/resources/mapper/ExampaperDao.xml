@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dao.ExampaperDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.entity.ExampaperEntity" id="exampaperMap">
+        <result property="name" column="name"/>
+        <result property="time" column="time"/>
+        <result property="status" column="status"/>
+    </resultMap>
+
+	<select id="selectListVO"
+		resultType="com.entity.vo.ExampaperVO" >
+		SELECT * FROM exampaper  exampaper         
+        <where> 1=1 ${ew.sqlSegment}</where>
+	</select>
+	
+	<select id="selectVO"
+		resultType="com.entity.vo.ExampaperVO" >
+		SELECT  exampaper.* FROM exampaper  exampaper
+ 		<where> 1=1 ${ew.sqlSegment}</where>
+	</select>
+
+    <select id="selectListView"
+		resultType="com.entity.view.ExampaperView" >
+
+		SELECT  exampaper.* FROM exampaper  exampaper 	        
+        <where> 1=1 ${ew.sqlSegment}</where>
+	</select>
+	
+	<select id="selectView"
+		resultType="com.entity.view.ExampaperView" >
+		SELECT * FROM exampaper  exampaper <where> 1=1 ${ew.sqlSegment}</where>
+	</select>
+	
+	
+</mapper>

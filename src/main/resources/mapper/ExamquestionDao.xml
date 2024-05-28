@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dao.ExamquestionDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.entity.ExamquestionEntity" id="examquestionMap">
+        <result property="paperid" column="paperid"/>
+        <result property="papername" column="papername"/>
+        <result property="questionname" column="questionname"/>
+        <result property="options" column="options"/>
+        <result property="score" column="score"/>
+        <result property="answer" column="answer"/>
+        <result property="analysis" column="analysis"/>
+        <result property="type" column="type"/>
+        <result property="sequence" column="sequence"/>
+    </resultMap>
+
+	<select id="selectListVO"
+		resultType="com.entity.vo.ExamquestionVO" >
+		SELECT * FROM examquestion  examquestion         
+        <where> 1=1 ${ew.sqlSegment}</where>
+	</select>
+	
+	<select id="selectVO"
+		resultType="com.entity.vo.ExamquestionVO" >
+		SELECT  examquestion.* FROM examquestion  examquestion
+ 		<where> 1=1 ${ew.sqlSegment}</where>
+	</select>
+
+    <select id="selectListView"
+		resultType="com.entity.view.ExamquestionView" >
+
+		SELECT  examquestion.* FROM examquestion  examquestion 	        
+        <where> 1=1 ${ew.sqlSegment}</where>
+	</select>
+	
+	<select id="selectView"
+		resultType="com.entity.view.ExamquestionView" >
+		SELECT * FROM examquestion  examquestion <where> 1=1 ${ew.sqlSegment}</where>
+	</select>
+	
+	
+</mapper>

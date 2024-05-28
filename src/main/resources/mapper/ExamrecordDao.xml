@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dao.ExamrecordDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.entity.ExamrecordEntity" id="examrecordMap">
+        <result property="userid" column="userid"/>
+        <result property="username" column="username"/>
+        <result property="paperid" column="paperid"/>
+        <result property="papername" column="papername"/>
+        <result property="questionid" column="questionid"/>
+        <result property="questionname" column="questionname"/>
+        <result property="options" column="options"/>
+        <result property="score" column="score"/>
+        <result property="answer" column="answer"/>
+        <result property="analysis" column="analysis"/>
+        <result property="myscore" column="myscore"/>
+        <result property="myanswer" column="myanswer"/>
+    </resultMap>
+
+	<select id="selectListVO"
+		resultType="com.entity.vo.ExamrecordVO" >
+		SELECT * FROM examrecord  examrecord         
+        <where> 1=1 ${ew.sqlSegment}</where>
+	</select>
+	
+	<select id="selectVO"
+		resultType="com.entity.vo.ExamrecordVO" >
+		SELECT  examrecord.* FROM examrecord  examrecord
+ 		<where> 1=1 ${ew.sqlSegment}</where>
+	</select>
+
+    <select id="selectListView"
+		resultType="com.entity.view.ExamrecordView" >
+
+		SELECT  examrecord.* FROM examrecord  examrecord 	        
+        <where> 1=1 ${ew.sqlSegment}</where>
+	</select>
+	
+	<select id="selectView"
+		resultType="com.entity.view.ExamrecordView" >
+		SELECT * FROM examrecord  examrecord <where> 1=1 ${ew.sqlSegment}</where>
+	</select>
+	
+	<select id="selectGroupBy"
+		resultType="com.entity.view.ExamrecordView" >
+		select userid,paperid,papername,sum(myscore) myscore from examrecord     
+        <where> 1=1 ${ew.sqlSegment}</where>
+        group by userid,paperid,papername  
+	</select>
+	
+</mapper>
